@@ -5,7 +5,12 @@
 #questionsContainer
 {
     border: 1px solid black;
+    padding: 5px;
     
+}
+#questionsContainer .heading
+{
+    font-size:  26px;
 }
 .question
 {
