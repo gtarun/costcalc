@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>Cost Estimation Venture Pact</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Container to hold complete HTML Starts  -->
+    <div id="container">
+        <!-- Questions Container starts -->
+        <div id="questionsContainer">
+            <div class="question">
+
+            </div>
+
+        </div>
+        <!-- Questions Container Ends -->
+
+        <!-- Zone result Starts  -->
+        <div id="zoneResult">
+            <div>Zone 1<br />
+                <span id="zone1">$0</span>
+            </div>
+            <div>Zone 2<br />
+                <span id="zone2"></span>
+            </div>
+            <div>Zone 3<br />
+                <span id="zone3"></span>
+            </div>
+            <div>Zone 4<br />
+                <span id="zone4"></span>
+            </div>
+
+        </div>
+        <!-- Zone result Ends  -->
+
+
+    </div>
+    <!-- Container to hold complete HTML End  -->
+    <script type="text/javascript" src="jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="calc.js"></script>
+    <script type="text/javascript">
+    window.onload = _vpcalc("container").renderData();
+    </script>
+    <script type="text/template">
+    <div class="question">
+        <div class="heading">
+            {{HEADING}}
+        </div>
+        <div class="options">
+            {{OPTIONHTML}
+        </div>
+    </div>
+    </script>
+</body>
+
+</html>

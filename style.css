@@ -1,0 +1,13 @@
+#zoneResult div {
+    float: left;
+    padding: 20px;
+}
+#questionsContainer
+{
+    border: 1px solid black;
+    
+}
+.question
+{
+    padding: 10px;
+}
