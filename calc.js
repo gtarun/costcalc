@@ -1,3 +1,9 @@
+
+/*
+* Venture pact Cost calculator.
+* Developed by Tarun Gupta
+*/
+
 //Json data for calculations
 
 var data = {
@@ -20,6 +26,7 @@ var data = {
             "price": "50",
             "status": 1
             }
+
 
         ],
 
@@ -132,8 +139,7 @@ var data = {
             }
             this.e = document.getElementById(init);
             return this;
-        } 
-        else {
+        } else {
             return def;
         }
 
@@ -153,9 +159,9 @@ _vpcalc.prototype = {
             $.each(d, function (i, v) {
                 if (d[i].status) {
                     if (data.Questions[index].multi) {
-                        optionList += "<span class='chkspan' ><input type='checkbox' value='"+d[i].factor+"' name='Q" + i + "' class='chkbox' /> </span>" + d[i].text;
+                        optionList += "<span class='chkspan' ><input type='checkbox' value='" + d[i].factor + "' name='Q" + i + "' class='chkbox' /> </span>" + d[i].text;
                     } else {
-                        optionList += "<span class='rdspan' ><input type='radio' name='Q" + index + "' value='"+ d[i].factor+"' class='rdbutton'/>" + d[i].text;
+                        optionList += "<span class='rdspan' ><input type='radio' name='Q" + index + "' value='" + d[i].factor + "' class='rdbutton'/>" + d[i].text;
                     }
                 }
             });
@@ -183,14 +189,20 @@ _vpcalc.prototype = {
         });
         $("#zoneResult").html(zonehtm);
     },
-    addToZone: function(el){
+    addToZone: function (el) {
         console.log("adding" + el);
+        $("#zoneResult").find('[id^="zonename"]').each(function(index,value){
+            var currentValue = parseInt($(this).find('[id^="zonePrice"').html());
+            var newVal = (parseFloat(el)*100)* currentValue;
+            $(this).find('[id^="zonePrice"').html(newVal);
+            console.log("htlm "  +$(this).find('[id^="zonePrice"').html());
+        });
     },
-    removeFromZone : function(el)
-    {
+    removeFromZone: function (el) {
         console.log("removeing" + el);
+        
     }
-    
+
 
 
 }
