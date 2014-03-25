@@ -3,7 +3,7 @@
 var data = {
     "ZoneList": [
         {
-            "name": "Zone2",
+            "name": "Zonetime sbdhvdsh",
             "price": "30",
             "status": 1
         },
@@ -136,9 +136,11 @@ var data = {
     }
 _vpcalc.prototype = {
     renderData: function () {
-        var questionData = "";
+        
+        //Render Question and thier options 
+        var questionContainer = "";
         $.each(data.Questions, function (index, value) {
-
+            var quedstionData = "<div class='questionDiv'>"
             var heading = '<div class="heading" id="qHead' + index + '">' + data.Questions[index].question + '</div>';
             //To check if radio button needed or checkbox
             var optionList = "";
@@ -149,19 +151,24 @@ _vpcalc.prototype = {
                     if (data.Questions[index].multi) {
                         optionList += "<span class='chkbox' ><input type='checkbox' value='' name='Q" + i + "' /> </span>" + d[i].text;
                     } else {
-                        optionList+= "<span class='radiobtn' ><input type='radio' name='Q" +i+ "' />" + d[i].text;
+                        optionList+= "<span class='radiobtn' ><input type='radio' name='Q" +index+ "' />" + d[i].text;
                     }
                 }
             });
 
 
-
-            questionData += heading + " " + optionList;
+            quedstionData = quedstionData + " " + heading + "<div class='optionlist'>" + optionList + "</div>";
+            quedstionData += "</div>"; //end of the single question container
+            questionContainer += quedstionData;
             console.log("data : " + JSON.stringify(data.Questions[index]));
         });
-        $("#questionsContainer").html(questionData);
+        $("#questionsContainer").html(questionContainer);
+        
+        // Render Zone and thier intial prices.
         var zonehtm = "";
         $.each(data.ZoneList, function (index, value) {
+            
+            //check for the status first
             if (data.ZoneList[index].status) {
                 var name = '<span id="zoneHeading' + index + '">' + data.ZoneList[index].name + '</span>';
                 var price = '<span id="zonePrice' + index + '">' + data.ZoneList[index].price + '</span>';
