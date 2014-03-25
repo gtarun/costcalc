@@ -3,16 +3,19 @@
 var data = {
     "ZoneList": [
         {
-            "name": "Zonetime sbdhvdsh",
+            "title": "This is the title for Zone Time",
+            "name": "Zonetime ",
             "price": "30",
             "status": 1
         },
         {
+            "title": "This is the title for Zone 2",
             "name": "Zone2",
             "price": "30",
             "status": 1
         },
         {
+            "title": "This is the title for Zone 3",
             "name": "Zone3",
             "price": "40",
             "status": 1
@@ -82,7 +85,7 @@ var data = {
                 }
             ]
         },
-         {
+        {
             "question": "How will you handle user management?",
             "multi": 1,
             "data": [
@@ -112,7 +115,7 @@ var data = {
                 }
             ]
         }
-        
+
     ]
 
 }
@@ -129,14 +132,15 @@ var data = {
             }
             this.e = document.getElementById(init);
             return this;
-        } else {
+        } 
+        else {
             return def;
         }
 
     }
 _vpcalc.prototype = {
     renderData: function () {
-        
+
         //Render Question and thier options 
         var questionContainer = "";
         $.each(data.Questions, function (index, value) {
@@ -151,7 +155,7 @@ _vpcalc.prototype = {
                     if (data.Questions[index].multi) {
                         optionList += "<span class='chkbox' ><input type='checkbox' value='' name='Q" + i + "' /> </span>" + d[i].text;
                     } else {
-                        optionList+= "<span class='radiobtn' ><input type='radio' name='Q" +index+ "' />" + d[i].text;
+                        optionList += "<span class='radiobtn' ><input type='radio' name='Q" + index + "' />" + d[i].text;
                     }
                 }
             });
@@ -163,17 +167,17 @@ _vpcalc.prototype = {
             console.log("data : " + JSON.stringify(data.Questions[index]));
         });
         $("#questionsContainer").html(questionContainer);
-        
+
         // Render Zone and thier intial prices.
         var zonehtm = "";
         $.each(data.ZoneList, function (index, value) {
-            
+
             //check for the status first
             if (data.ZoneList[index].status) {
                 var name = '<span id="zoneHeading' + index + '">' + data.ZoneList[index].name + '</span>';
                 var price = '<span id="zonePrice' + index + '">' + data.ZoneList[index].price + '</span>';
 
-                zonehtm = zonehtm + "<div id= 'zonename" + index + "' title= 'This Zone include us and specific regions'>" + name + " <br />" + price + "</div>";
+                zonehtm = zonehtm + "<div id= 'zonename" + index + "' title= '" + data.ZoneList[index].title + "'>" + name + " <br />" + price + "</div>";
 
             }
         });
