@@ -11,15 +11,15 @@ var data = {
         {
             "title": "This is the title for Zone 2",
             "name": "Zone2",
-            "price": "30",
+            "price": "40",
             "status": 1
         },
         {
             "title": "This is the title for Zone 3",
             "name": "Zone3",
-            "price": "40",
+            "price": "50",
             "status": 1
-        }
+            }
 
         ],
 
@@ -153,9 +153,9 @@ _vpcalc.prototype = {
             $.each(d, function (i, v) {
                 if (d[i].status) {
                     if (data.Questions[index].multi) {
-                        optionList += "<span class='chkbox' ><input type='checkbox' value='' name='Q" + i + "' /> </span>" + d[i].text;
+                        optionList += "<span class='chkspan' ><input type='checkbox' value='"+d[i].factor+"' name='Q" + i + "' class='chkbox' /> </span>" + d[i].text;
                     } else {
-                        optionList += "<span class='radiobtn' ><input type='radio' name='Q" + index + "' />" + d[i].text;
+                        optionList += "<span class='rdspan' ><input type='radio' name='Q" + index + "' value='"+ d[i].factor+"' class='rdbutton'/>" + d[i].text;
                     }
                 }
             });
@@ -183,6 +183,14 @@ _vpcalc.prototype = {
         });
         $("#zoneResult").html(zonehtm);
     },
+    addToZone: function(el){
+        console.log("adding" + el);
+    },
+    removeFromZone : function(el)
+    {
+        console.log("removeing" + el);
+    }
+    
 
 
 }

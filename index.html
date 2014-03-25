@@ -26,22 +26,32 @@
 
 
     </div>
+    
+    
+    <input type="checkbox" 
     <!-- Container to hold complete HTML End  -->
     <script type="text/javascript" src="jquery-1.7.min.js"></script>
     <script type="text/javascript" src="calc.js"></script>
     <script type="text/javascript">
     window.onload = _vpcalc("container").renderData();
+    $(document).ready(function(){
+        $('.chkbox , .rdbutton').bind('change' , function(el){
+            
+            if(typeof $(this).attr("checked") !== 'undefined')
+            {
+                
+                _vpcalc("container").addToZone($(this).attr('value'));
+               // console.log("checked " + $(this).attr("checked") +  " value " + $(this).attr('value'));
+            }
+            else
+            {
+                _vpcalc("container").removeFromZone($(this).attr('value'));
+                //console.log("unchecked" + $(this).attr("checked") + " value " + $(this).attr('value'));
+            }
+        });
+    });
     </script>
-    <script type="text/template">
-    <div class="question">
-        <div class="heading">
-            {{HEADING}}
-        </div>
-        <div class="options">
-            {{OPTIONHTML}}
-        </div>
-    </div>
-    </script>
+    
 </body>
 
 </html>
